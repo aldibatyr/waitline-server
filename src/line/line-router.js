@@ -101,7 +101,7 @@ lineRouter
       next(error)
     }
   })
-  .delete(':/id', async (req, res, next) => {
+  .delete('/:id', async (req, res, next) => {
     LineService.deleteGuest(
       req.app.get('db'),
       req.params.id
