@@ -115,8 +115,8 @@ lineRouter
   })
   .patch('/:id', jsonBodyParser, (req, res, next) => {
     const {id} = req.params
-    const {guest_name, phone_number, size} = req.body
-    const updatedGuest = {guest_name, phone_number, size}
+    const {guest_name, phone_number, size, calledOn} = req.body
+    const updatedGuest = {guest_name, phone_number, size, calledOn}
 
     const numberOfValues = Object.values(updatedGuest).filter(Boolean).length
     if (numberOfValues === 0) {
