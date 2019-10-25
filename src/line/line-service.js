@@ -10,7 +10,8 @@ const LineService = {
       'guest_name',
       'phone_number',
       'size',
-      'user_id'
+      'user_id',
+      'calledOn'
     )
       .from(table) 
       .where('user_id', user_id);
@@ -46,6 +47,12 @@ const LineService = {
       .update(newInfo);
   },
 
+  assignTime(knex, id, time) {
+    return knex(table)
+      .where({id})
+      .update(time);
+  },
+
   serializeGuest(guest) {
     return {
       id: guest.id,
@@ -53,6 +60,7 @@ const LineService = {
       phone_number: xss(guest.phone_number),
       size: xss(guest.size),
       user_id: guest.user_id,
+      calledOn: guest.calledOn,
     };
   }
 };
